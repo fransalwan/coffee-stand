@@ -120,9 +120,9 @@ coffee-stand/
 │   └── package.json
 │
 └── README.md
----
+```
 
-## 🗄️ Database Schema
+## 🗄️ Struktur Project
 
 ### Core Tables
 
@@ -197,7 +197,7 @@ Base URL: `http://localhost:8080/api`
 
 ### Backend Setup
 
-```bash
+bash
 # 1. Clone repository
 git clone https://github.com/fransalwan/coffee-stand.git
 cd coffee-stand/backend
