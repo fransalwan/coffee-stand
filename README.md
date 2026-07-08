@@ -120,7 +120,7 @@ coffee-stand/
 │   └── package.json
 │
 └── README.md
-
+---
 
 ## 🗄️ Database Schema
 
@@ -349,7 +349,7 @@ Punya pertanyaan? Mau kolaborasi? Atau sekadar mau ngobrol soal kopi & code?
   - Collaboration proposals
   - General questions
 
----
+
 
 **Response Time:**
 - GitHub Issues: 1-3 hari
