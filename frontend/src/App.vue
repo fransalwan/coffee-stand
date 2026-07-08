@@ -1,47 +1,54 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import { ref, onMounted } from 'vue';
+import { getMenu } from './services/api';
+import type { MenuItem } from './types';
+
+const menus = ref<MenuItem[]>([]);
+const isLoading = ref(true);
+const error = ref('');
+
+onMounted(async () => {
+  try {
+    console.log('Fetching menu from API...');
+    menus.value = await getMenu();
+    console.log('Menu loaded:', menus.value);
+  } catch (err) {
+    error.value = err instanceof Error ? err.message : 'Unknown error';
+    console.error('Failed to fetch menu:', err);
+  } finally {
+    isLoading.value = false;
+  }
+});
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+  <div class="min-h-screen bg-coffee-50 p-8">
+    <h1 class="text-3xl font-bold text-coffee-900 mb-4">API Test</h1>
+    
+    <div v-if="isLoading" class="text-coffee-600">
+      Loading menu...
     </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+    
+    <div v-else-if="error" class="text-red-600 bg-red-50 p-4 rounded-lg">
+      <strong>Error:</strong> {{ error }}
+    </div>
+    
+    <div v-else>
+      <p class="text-green-600 bg-green-50 p-4 rounded-lg mb-4">
+        ✅ API Connected! Loaded {{ menus.length }} menus.
+      </p>
+      
+      <div class="space-y-2">
+        <div 
+          v-for="menu in menus" 
+          :key="menu.id"
+          class="bg-white p-4 rounded-lg shadow-sm border border-coffee-100"
+        >
+          <h3 class="font-bold text-coffee-900">{{ menu.name }}</h3>
+          <p class="text-sm text-coffee-600">{{ menu.description }}</p>
+          <p class="text-coffee-800 font-semibold mt-2">Rp {{ menu.price.toLocaleString('id-ID') }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
-
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
