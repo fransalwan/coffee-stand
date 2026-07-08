@@ -1,0 +1,149 @@
+# ============================================
+# Environment & Secrets
+# ============================================
+# Jangan pernah commit kredensial database & API keys
+.env
+.env.local
+.env.*.local
+
+# ============================================
+# Binary & Build Artifacts
+# ============================================
+# Binary hasil compile (Golang)
+/main
+/backend
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool
+*.out
+*.cover
+
+# Dependency directory
+/vendor/
+
+# Build output directory
+/build/
+/dist/
+
+# ============================================
+# IDE & Editor Files
+# ============================================
+# VS Code
+.vscode/
+*.code-workspace
+
+# GoLand / IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# ============================================
+# OS Generated Files
+# ============================================
+# macOS
+.DS_Store
+.AppleDouble
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.directory
+
+# ============================================
+# Logs & Temporary Files
+# ============================================
+# Application logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+tmp/
+temp/
+
+# ============================================
+# Database Files (jika pakai SQLite untuk dev)
+# ============================================
+*.db
+*.sqlite
+*.sqlite3
+
+# ============================================
+# Docker (jika ada local dev setup)
+# ============================================
+docker-compose.override.yml
+
+# ============================================
+# Testing & Coverage
+# ============================================
+# Coverage reports
+coverage.html
+coverage.txt
+.coverage/
+
+# Test results
+test-results/
+
+# ============================================
+# Misc
+# ============================================
+# Node modules (jika ada tooling JS)
+node_modules/
+
+# Python virtual env (jika ada scripting)
+venv/
+env/
+
+# Backup files
+*.bak
+*.backup
+*.orig
+
+# ============================================
+# Project Specific
+# ============================================
+# Postman local history (jika disimpan di repo)
+postman_history/
+
+# Local development scripts
+dev-scripts/
+
+# ============================================
+# IMPORTANT: Files yang HARUS di-commit
+# ============================================
+# .env.example -> WAJIB di-commit sebagai template
+# go.mod & go.sum -> WAJIB di-commit untuk dependency management
+# Semua file *.go -> WAJIB di-commit
+# README.md -> WAJIB di-commit
+# postman_collection.json -> WAJIB di-commit
